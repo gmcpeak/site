@@ -30,7 +30,7 @@
 
 #big-name{
     background-image : url("../images/pixel-city.png");
-    background-position: 0% 10%;
+    background-position: center 10%;
     padding-top: 8%;
     padding-bottom: 8%;
     text-align: center;
@@ -38,7 +38,7 @@
 
 h1 {
     font-family: "8bit-wonder";
-    font-size: 400%;
+    font-size: 4.5vw;
     color: white;
 }
 
