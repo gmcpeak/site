@@ -47,6 +47,15 @@
     padding-bottom: 30pt;
 }
 
+.default-img {
+    min-width: 200px;
+    max-width: 800px;
+    width: 25%;
+    height: auto;
+    padding-top: 12px;
+    margin-left: 25px;
+}
+
 #me-img {
     float: right;
     min-width: 200px;
