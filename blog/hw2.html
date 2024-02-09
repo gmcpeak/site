@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vision HW 2 Blog Post</title>
+        <link rel = "stylesheet" href = "../style/style.css">
+    </head>
+    <body>
+        <div id = "main-content">
+            <h2>Attemtping to Classify Pictures of Cats and Dogs (and the Creature In-Between)</h2>
+            <p>In my last post I showed off some AI-generated images of dogs, cats, and imaginary animals that were "part-dog" and "part-cat."</p>
+            <p>I'd like to now take these images and attempt to classify them using a Neural Net in order to see how it reacts to these strange images that incorporate features of both one class and another in unnatural ways that are unlikely to be represented in its dataset. 
+            Here, I'll use ResNet-50, pretrained on ImageNet-1k, to attempt to classify each image and report the top 5 classes for each picture.</p>
+            <p>First, we have our dog.</p>
+            <div class="center">
+                <img src = "../images/ai-dog.png" id = "ai-dog" class = "default-img">
+                <table>
+                    <tr>
+                        <td>Pembroke</td>
+                        <td>-1.38</td>
+                    </tr>
+                    <tr>
+                        <td>golden retriever</td>
+                        <td>-1.40</td>
+                    </tr>
+                    <tr>
+                        <td>Border collie</td>
+                        <td>-2.20</td>
+                    </tr>
+                    <tr>
+                        <td>Pomeranian</td>
+                        <td>-2.60</td>
+                    </tr>
+                    <tr>
+                        <td>collie</td>
+                        <td>-2.73</td>
+                    </tr>
+                </table>
+            </div>
+            <br><br>
+            <p>Next, we have a cat.</p>   
+            <div class="center">
+                <img src = "../images/ai-cat.png" id = "ai-cat" class = "default-img">
+                <table>
+                    <tr>
+                        <td>lynx</td>
+                        <td>1.23</td>
+                    </tr>
+                    <tr>
+                        <td>tabby</td>
+                        <td>-1.60</td>
+                    </tr>
+                    <tr>
+                        <td>tiger cat</td>
+                        <td>-2.27</td>
+                    </tr>
+                    <tr>
+                        <td>bowtie</td>
+                        <td>-2.34</td>
+                    </tr>
+                    <tr>
+                        <td>Egyptian cat</td>
+                        <td>-3.49</td>
+                    </tr>
+                </table>
+            </div>
+            <br><br>
+            <p>Below is a picture of a creature that is "50% a cat and 50% a dog."</p>
+            <div class="center">
+                <img src = "../images/half-and-half.png" id = "ai-half" class = "default-img">
+                <table>
+                    <tr>
+                        <td>Tabby</td>
+                        <td>-0.32</td>
+                    </tr>
+                    <tr>
+                        <td>Eskimo dog</td>
+                        <td>-2.25</td>
+                    </tr>
+                    <tr>
+                        <td>tiger cat</td>
+                        <td>-2.41</td>
+                    </tr>
+                    <tr>
+                        <td>tub</td>
+                        <td>-2.45</td>
+                    </tr>
+                    <tr>
+                        <td>Appenzeller</td>
+                        <td>-2.69</td>
+                    </tr>
+                </table>
+            </div>
+            <br><br>
+            <p>Next, we have "75% dog and 25% cat" and vice-versa.</p>
+            <p>Mostly a cat and slightly a dog:</p>
+            <div class="center">
+                <img src = "../images/mostly-cat.png" id = "mostly-cat" class = "default-img">
+                <table>
+                    <tr>
+                        <td>Egyptian cat</td>
+                        <td>-2.43</td>
+                    </tr>
+                    <tr>
+                        <td>Australian terrier</td>
+                        <td>-2.53</td>
+                    </tr>
+                    <tr>
+                        <td>kit fox</td>
+                        <td>-2.88</td>
+                    </tr>
+                    <tr>
+                        <td>red fox</td>
+                        <td>-2.89</td>
+                    </tr>
+                    <tr>
+                        <td>Chihuahua</td>
+                        <td>-3.11</td>
+                    </tr>
+                </table>
+            </div>
+            <br><br>
+            <p>Mostly a dog and slightly a cat:</p>
+            <div class="center">
+                <img src = "../images/mostly-dog.png" id = "mostly-dog" class = "default-img">
+                <table>
+                    <tr>
+                        <td>tiger cat</td>
+                        <td>-0.95</td>
+                    </tr>
+                    <tr>
+                        <td>web site</td>
+                        <td>-1.47</td>
+                    </tr>
+                    <tr>
+                        <td>lynx</td>
+                        <td>-2.26</td>
+                    </tr>
+                    <tr>
+                        <td>tabby</td>
+                        <td>-2.46</td>
+                    </tr>
+                    <tr>
+                        <td>Persian cat</td>
+                        <td>-3.04</td>
+                    </tr>
+                </table>
+            </div>
+            <h3>Discussion</h3>
+            <p>Interestingly, the model does seem to be almost as "successful" as it possibly could be in recognizing that our images are indeed combinations of cats and dogs.
+            For our baseline, it has little problem telling that our dog is a dog and that our cat is a cat, since it almost always assigns dog and cat classifiers to each one, respectively.
+            (Except in the case of the fourth-highest classification for the cat, which is "bowtie," for reasons that escape me.) For the combinations, the model also generally tends to alternate between 
+            assigning a "dog-type" or "cat-type" class, with a few exceptions. There are some exceptions that are totally nonsensical, such as "tub." However, there are some more interesting ones, like 
+            "kit fox" and "red fox," which both are arguably reasonable guesses, since the resulting "cat-dogs" could both be mistaken for totally separate animals. Finally, one new thing
+            to note is that one of the classifications of our last picture is "web site," which I will argue here is actually a reasonable classification, due to all of the fake labels that are drawn on
+            the image and are designed to look like text, which could likely have thrown off the model into treating it as some sort of grpahic, diagram, or webpage instead of as a real picture.
+            </p>
+        </div>
+    </body>
