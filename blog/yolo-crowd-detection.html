@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Crowd Detection with YOLOv8</title>
+        <link rel = "stylesheet" href = "../style/style.css">
+    </head>
+    <body>
+        <div id = "main-content">
+            <h2>Would Crowd Detection with YOLOv8 Work?</h2>
+            <p>by Grady McPeak and Kevin Robbins</p>
+            <p>The <a href = "https://arxiv.org/pdf/1506.02640.pdf">YOLO</a> vision model got famous for its ability to do object detection in real-time. This makes it an 
+            ideal candidate for implementation in video-based surveillance systems, where a potential threat could perhaps be detected and reported automatically. However, 
+            the design and implementation of such a system presents challenges that may perhaps be insurmountable with what is currently available on the market. For example,
+            imagine being asked to identify a dangerous or threatening individual in a clip of a large crowd, with perhaps thousands of people. The "Where's Waldo" game that
+            follows is not something that we humans are able to do quickly. But can YOLO?</p>
+
+            <img src = "../images/Wheres-Waldo.jpg" id = "is-poster-img">
+            <p class = "caption">Source: <a href="https://www.pinterest.com/pin/waldo-cartoon-wheres-wally-2k-wallpaper-hdwallpaper-desktop--347903139969675520/">https://www.pinterest.com/pin/waldo-cartoon-wheres-wally-2k-wallpaper-hdwallpaper-desktop--347903139969675520/</a></p>
+
+            <p>A baseline we can use to determine if this task is even possible with YOLO is to test how good it is at simply counting the number of people in a crowd. Can it
+            put bounding boxes on every fan in a sold-out NFL stadium? Or is that level of detail just too noisy for YOLO to pick up on? </p>
+            
+            <p>To test this, we pit the latest and best-performing version version of YOLO, <a href = "https://yolov8.com/">YOLOv8</a>, up against a dataset of images specifically 
+                designed to test a CV model's ability to recogznie and count the number of people in a crowd. This dataset we used is 
+                <a href = "https://arxiv.org/pdf/2004.03597.pdf">JHU-CROWD++</a>, which boasts a large set of images of crowds ranging in sizes from a dozen or so to several thousand,
+                all while including different variations in camera settings, weather, and other potentially obfuscating factors.
+            </p>
+
+            <img src = "../images/jhu-crowd-variety.png" id = "is-poster-img">
+            <p class = "caption">Source: <a href="http://www.crowd-counting.com/">JHU-CROWD++ Website</a></p>
+
+            <p>In our experiment we iterated over every image in the "test" set in the dataset (which comes pre-partitioned) and counted how many "person" bounding boxes YOLOv8
+                assigned in the image. Then we compared that value to the ground truth number of people in the picture, a number which was determined by human annotators of the
+                dataset.
+            </p>
+
+            <img src = "../images/crowd-test.jpg" id = "is-poster-img">
+            <p class = "caption">YOLO can tell there are a few people here!</p>
+
+            <p>Our overall results suggest that YOLOv8 is not the ideal tool for counting large crowds. While it does a good job when the sizes are rather small, it performance
+                quickly plummets as crowd sizes increase.
+            </p>
+
+            <img src = "../images/yolov8-crowd-results-1.png" id = "is-poster-img">
+            <p class = "caption">YOLO gets overwhelmed pretty quickly</p>
+            
+            <img src = "../images/yolov8-crowd-results-2.png" id = "is-poster-img">
+            <p class = "caption">A breakdown by type of environment</p>
+
+            <p>These findings, of course, are not meant to imply that YOLOv8, or any previous version of the model, is "bad" by some objective measure. Rather, it tells us that
+                even though computer vision has made massive strides in recent years, the problem of distinguishing and counting people in a crowd is still a hard problem! With all of
+                the detail that such pictures include and all of the noise that comes along with them, this task remains a challenge even to today's cutting-edge solutions.
+            </p>
+
+            <h3>References</h3>
+            <p>JHU-CROWD++: Large-Scale Crowd Counting Dataset and A Benchmark Method<br />
+                Sindagi, Vishwanath A and Yasarla, Rajeev and Patel, Vishal M<br />
+                Technical Report<br />
+                2020<br />
+            </p>
+            <br />
+            <br />
+        </div>
+    </body>
+</html>
