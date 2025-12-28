@@ -29,8 +29,10 @@
 }
 
 #big-name{
-    background-image : url("../images/pixel-city.png");
-    background-position: center 15%;
+    background-image : url("../images/neuschwanstein.jpg");
+    background-position: center 40%;
+    background-size: cover;
+    background-repeat: no-repeat;
     padding-top: 5%;
     padding-bottom: 6%;
     text-align: center;
@@ -83,9 +85,9 @@
 }
 
 h1 {
-    font-family: "8bit-wonder";
+    font-family: "roboto-mono";
     font-size: 4.5vw;
-    color: white;
+    color: black;
 }
 
 h2 {
